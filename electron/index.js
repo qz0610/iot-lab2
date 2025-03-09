@@ -20,7 +20,7 @@ function client(){
     client.on('data', (data) => {
         if(data){
             const { temp } = JSON.parse(data.toString())
-            document.getElementById("temperature").innerHTML = temp ?? '0';
+            document.getElementById("temperature").innerHTML = `${temp}°C` ?? '0°C';
             console.log(data.toString());
         }
         client.end();
@@ -44,10 +44,10 @@ function send_data(keyCode) {
         if(data){
             const { key, power } = JSON.parse(data.toString())
             document.getElementById("direction").innerHTML = key ?? '0.0';
-            document.getElementById("speed").innerHTML = power ?? '0.0';
+            document.getElementById("speed").innerHTML = `${power}%` ?? '0.0%';
             if(key == "\r\n") {
                 document.getElementById("direction").innerHTML = "Stop";
-                document.getElementById("speed").innerHTML = '0.0';
+                document.getElementById("speed").innerHTML = '0.0%';
             }
             console.log(data.toString());
         }
